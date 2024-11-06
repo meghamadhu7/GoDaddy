@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .cart-container {
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .item-details h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity input {
+            width: 40px;
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        .remove-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 20px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .checkout-button {
+            display: block;
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .checkout-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your Pizza Cart</h2>
+    <div class="cart-container">
+        <div class="cart-item">
+            <img src="https://i.pinimg.com/736x/94/39/7e/94397ee433024ce3ee6585f15f078b3b.jpg" alt="Margherita Pizza">
+            <div class="item-details">
+                <h3>Margherita Pizza</h3>
+                <p class="price">$12.99</p>
+                <div class="quantity">
+                    <button class="decrease">-</button>
+                    <input type="number" value="1" min="1" class="quantity-input">
+                    <button class="increase">+</button>
+                </div>
+            </div>
+            <button class="remove-button">Remove</button>
+        </div>
+        
+        <div class="cart-item">
+            <img src="https://static.vecteezy.com/system/resources/previews/046/777/678/non_2x/tom-yum-kung-pizza-cheese-on-a-white-background-isolation-photo.jpg" alt="Pepperoni Pizza">
+            <div class="item-details">
+                <h3>Pepperoni Pizza</h3>
+                <p class="price">$14.99</p>
+                <div class="quantity">
+                    <button class="decrease">-</button>
+                    <input type="number" value="1" min="1" class="quantity-input">
+                    <button class="increase">+</button>
+                </div>
+            </div>
+            <button class="remove-button">Remove</button>
+        </div>
+
+        <div class="total">Total: $27.98</div>
+        <a href="#" class="checkout-button">Proceed to Checkout</a>
+    </div>
+
+    <script>
+        // Function to update the total price
+        function updateTotal() {
+            const cartItems = document.querySelectorAll('.cart-item');
+            let total = 0;
+
+            cartItems.forEach(item => {
+                const price = parseFloat(item.querySelector('.price').innerText.replace('$', ''));
+                const quantity = parseInt(item.querySelector('.quantity-input').value);
+                total += price * quantity;
+            });
+
+            document.querySelector('.total').innerText = 'Total: $' + total.toFixed(2);
+        }
+
+        // Event listeners for quantity increase and decrease
+        document.querySelectorAll('.increase').forEach(button => {
+            button.addEventListener('click', () => {
+                const input = button.previousElementSibling;
+                input.value = parseInt(input.value) + 1;
+                updateTotal();
+            });
+        });
+
+        document.querySelectorAll('.decrease').forEach(button => {
+            button.addEventListener('click', () => {
+                const input = button.nextElementSibling;
+                if (parseInt(input.value) > 1) {
+                    input.value = parseInt(input.value) - 1;
+                    updateTotal();
+                }
+            });
+        });
+
+        // Event listeners for removing items
+        document.querySelectorAll('.remove-button').forEach(button => {
+            button.addEventListener('click', () => {
+                button.closest('.cart-item').remove();
+                updateTotal();
+            });
+        });
+
+        // Initial total update
+        updateTotal();
+    </script>
+</body>
+</html>

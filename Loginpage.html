@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            width: 300px; /* Fixed width */
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #333; /* Dark gray color for headings */
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: calc(100% - 22px); /* Full width minus padding and border */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px; /* Rounded corners */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%; /* Full width */
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            border: none; /* No border */
+            padding: 10px;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .login-container p {
+            margin-top: 10px;
+            color: #555; /* Light gray text for instructions */
+        }
+
+        .login-container a {
+            color: #4CAF50; /* Green color for links */
+            text-decoration: none; /* No underline */
+        }
+
+        .login-container a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="your_login_script.php" method="POST"> <!-- Change to your actual script -->
+            <input type="text" name="username" placeholder="Username" required aria-label="Username">
+            <input type="password" name="password" placeholder="Password" required aria-label="Password">
+            <input type="submit" value="Login">
+        </form>
+        <p>Don't have an account? <a href="#">Register here</a></p>
+        <p><a href="#">Forgot your password?</a></p> <!-- Added password recovery link -->
+    </div>
+</body>
+</html>

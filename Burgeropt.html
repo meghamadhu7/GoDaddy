@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* Style for the page */
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f0f0f0; /* Light gray background */
+                padding: 20px;
+            }
+            .menu-options {
+                margin: 20px 0;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px;
+                margin: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                border-radius: 5px;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+            .burger {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+                background-color: #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+            .burger-preview {
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+                width: 150px;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: #f9f9f9;
+                min-height: 250px;
+            }
+            /* Ingredient styles */
+            .bun-top, .bun-bottom, .cheese, .tomato, .onion, .lettuce, .patty, .crispy-chicken {
+                width: 100px;
+                height: 30px;
+                border-radius: 20px;
+                text-align: center;
+                line-height: 30px;
+                color: white;
+                font-weight: bold;
+                margin: 5px 0;
+            }
+            .bun-top, .bun-bottom { background-color: #E4B363; color: #8B4513; }
+            .cheese { background-color: #FFD700; }
+            .tomato { background-color: #FF6347; }
+            .onion { background-color: #DDA0DD; }
+            .lettuce { background-color: #7CFC00; }
+            .patty { background-color: #8B4513; }
+            .crispy-chicken { background-color: #FFCC99; color: #8B4513; }
+            .total-price {
+                margin-top: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+            .buy-now-button {
+                background-color: #FF6347;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                margin-top: 15px;
+                cursor: pointer;
+                font-size: 16px;
+                border-radius: 5px;
+            }
+            .buy-now-button:hover {
+                background-color: #FF4500;
+            }
+            .delete{
+            background-color: red;
+        }
+        </style>
+    </head>
+    <body>
+        <h2>Burger Builder</h2>
+
+        <div class="menu-options">
+            <button onclick="toggleIngredient('bun-top')">Top Bun ($1)</button>
+            <button onclick="toggleIngredient('cheese')">Cheese ($0.5)</button>
+            <button onclick="toggleIngredient('tomato')">Tomato ($0.3)</button>
+            <button onclick="toggleIngredient('onion')">Onion ($0.2)</button>
+            <button onclick="toggleIngredient('lettuce')">Lettuce ($0.3)</button>
+            <button onclick="toggleIngredient('patty')">Patty ($1.5)</button>
+            <button onclick="toggleIngredient('crispy-chicken')">Crispy Chicken ($1.8)</button>
+            <button onclick="toggleIngredient('bun-bottom')">Bottom Bun ($1)</button>
+            <button onclick="resetOrder()" class="delete">Delete</button>
+        </div>
+
+        <div class="burger">
+            <h3>Your Burger:</h3>
+            <div id="burgerPreview" class="burger-preview"></div>
+            <div class="total-price">Total Price: $<span id="totalPrice">0.00</span></div>
+            <button onclick="buyNow()" class="buy-now-button">Buy Now</button>
+        </div>
+
+        <script>
+            // Prices for each ingredient
+            const ingredientPrices = {
+                'bun-top': 1.0,
+                'cheese': 0.5,
+                'tomato': 0.3,
+                'onion': 0.2,
+                'lettuce': 0.3,
+                'patty': 1.5,
+                'crispy-chicken': 1.8,
+                'bun-bottom': 1.0
+            };
+
+            // Variable to track the total price
+            let totalPrice = 0.0;
+
+            // Object to keep track of added ingredients
+            const ingredientsList = {};
+
+            // Function to toggle ingredient addition/removal
+            function toggleIngredient(type) {
+                const burgerPreview = document.getElementById('burgerPreview');
+
+                // Check if ingredient is already in the burger
+                if (ingredientsList[type]) {
+                    // Remove ingredient
+                    burgerPreview.removeChild(ingredientsList[type]);
+                    delete ingredientsList[type];
+                    totalPrice -= ingredientPrices[type];
+                } else {
+                    // Add ingredient
+                    const ingredientDiv = document.createElement('div');
+                    ingredientDiv.classList.add(type);
+                    ingredientDiv.textContent = getIngredientName(type);
+                    burgerPreview.appendChild(ingredientDiv);
+
+                    ingredientsList[type] = ingredientDiv;
+                    totalPrice += ingredientPrices[type];
+                }
+
+                // Update the total price display
+                document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+            }
+
+            // Helper function to get the ingredient name based on type
+            function getIngredientName(type) {
+                switch (type) {
+                    case 'bun-top': return "Top Bun";
+                    case 'cheese': return "Cheese";
+                    case 'tomato': return "Tomato";
+                    case 'onion': return "Onion";
+                    case 'lettuce': return "Lettuce";
+                    case 'patty': return "Patty";
+                    case 'crispy-chicken': return "Crispy Chicken";
+                    case 'bun-bottom': return "Bottom Bun";
+                    default: return "";
+                }
+            }
+
+            // Function to handle the Buy Now button click
+            function buyNow() {
+                if (Object.keys(ingredientsList).length === 0) {
+                    alert("Your burger is empty! Please add ingredients before buying.");
+                    return;
+                }
+
+                // Create a summary message
+                let orderSummary = "Your Burger Order:\n";
+                let index = 1;
+                for (let ingredient in ingredientsList) {
+                    orderSummary += `${index++}. ${getIngredientName(ingredient)}\n`;
+                }
+                orderSummary += `\nTotal Price: $${totalPrice.toFixed(2)}`;
+
+                // Display the summary
+                alert(orderSummary);
+
+                // Reset the order after confirmation
+                resetOrder();
+            }
+
+            // Function to reset the burger preview and total price
+            function resetOrder() {
+                // Clear ingredients list
+                for (let ingredient in ingredientsList) {
+                    ingredientsList[ingredient].remove();
+                }
+                ingredientsList = {};
+                totalPrice = 0.0;
+
+                // Reset the total price display
+                document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+            }
+        </script>
+    </body>
+</html>

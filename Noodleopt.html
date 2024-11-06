@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .menu-options {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .noodle {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .noodle-preview {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            width: 150px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            min-height: 250px;
+            margin: auto;
+        }
+
+        .topping {
+            width: 100px;
+            height: 30px;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        /* Specific topping styles */
+        .noodles { background-color: #E4B363; }
+        .soy-sauce { background-color: #8B4513; }
+        .chicken { background-color: #FFA07A; }
+        .shrimp { background-color: #FF6347; }
+        .tofu { background-color: #FFE4B5; }
+        .broccoli { background-color: #32CD32; }
+        .carrots { background-color: #FFA500; }
+        .green-onions { background-color: #ADFF2F; }
+
+        .total-price {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .buy-now-button {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .buy-now-button:hover {
+            background-color: #FF4500;
+            transform: scale(1.05);
+        }
+        .delete{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Noodle Bowl Builder</h2>
+
+    <div class="menu-options">
+        <button onclick="addTopping('noodles')">Noodles ($3)</button>
+        <button onclick="addTopping('soy-sauce')">Soy Sauce ($0.5)</button>
+        <button onclick="addTopping('chicken')">Chicken ($1.5)</button>
+        <button onclick="addTopping('shrimp')">Shrimp ($2)</button>
+        <button onclick="addTopping('tofu')">Tofu ($1)</button>
+        <button onclick="addTopping('broccoli')">Broccoli ($0.7)</button>
+        <button onclick="addTopping('carrots')">Carrots ($0.5)</button>
+        <button onclick="addTopping('green-onions')">Green Onions ($0.4)</button>
+        <button  class="delete">Delete</button>
+    </div>
+
+    <div class="noodle">
+        <h3>Your Noodle Bowl:</h3>
+        <div id="noodlePreview" class="noodle-preview"></div>
+        <div class="total-price">Total Price: $<span id="totalPrice">0.00</span></div>
+        <button onclick="buyNow()" class="buy-now-button">Buy Now</button>
+    </div>
+
+    <script>
+        const toppingPrices = {
+            'noodles': 3.0,
+            'soy-sauce': 0.5,
+            'chicken': 1.5,
+            'shrimp': 2.0,
+            'tofu': 1.0,
+            'broccoli': 0.7,
+            'carrots': 0.5,
+            'green-onions': 0.4
+        };
+
+        let totalPrice = 0.0;
+        let toppingsList = [];
+
+        function addTopping(type) {
+            const noodlePreview = document.getElementById('noodlePreview');
+
+            const toppingDiv = document.createElement('div');
+            toppingDiv.classList.add(type, 'topping');
+
+            let toppingName = '';
+            switch (type) {
+                case 'noodles': toppingName = "Noodles"; break;
+                case 'soy-sauce': toppingName = "Soy Sauce"; break;
+                case 'chicken': toppingName = "Chicken"; break;
+                case 'shrimp': toppingName = "Shrimp"; break;
+                case 'tofu': toppingName = "Tofu"; break;
+                case 'broccoli': toppingName = "Broccoli"; break;
+                case 'carrots': toppingName = "Carrots"; break;
+                case 'green-onions': toppingName = "Green Onions"; break;
+            }
+
+            toppingDiv.textContent = toppingName;
+            noodlePreview.appendChild(toppingDiv);
+
+            totalPrice += toppingPrices[type];
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+
+            toppingsList.push(toppingName);
+        }
+
+        function buyNow() {
+            if (toppingsList.length === 0) {
+                alert("Your noodle bowl is empty! Please add toppings before buying.");
+                return;
+            }
+
+            let orderSummary = "Your Noodle Bowl Order:\n";
+            toppingsList.forEach((topping, index) => {
+                orderSummary += `${index + 1}. ${topping}\n`;
+            });
+            orderSummary += `\nTotal Price: $${totalPrice.toFixed(2)}`;
+
+            alert(orderSummary);
+            resetOrder();
+        }
+
+        function resetOrder() {
+            toppingsList = [];
+            totalPrice = 0.0;
+
+            document.getElementById('noodlePreview').innerHTML = '';
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+        }
+    </script>
+</body>
+</html>

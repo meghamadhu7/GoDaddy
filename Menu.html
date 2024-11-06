@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Inspiration</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Hero Section for What's on your mind */
+        .heros {
+            background-color: black; /* Replace with your food-related image URL */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .heros h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: white;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .heros h1 span {
+            font-size: 1.5em;
+            display: inline-block;
+            margin-left: 10px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        /* Bounce Animation */
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        /* Food Icons Section */
+        .food-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 30px 0;
+            background-color: #f9f9f9;
+        }
+
+        .food-item {
+            text-align: center;
+            margin: 15px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 150px;
+            transition: transform 0.3s;
+        }
+        .food-item a{
+        color: #333;
+        text-decoration: none;
+        }
+
+        .food-item:hover {
+            transform: scale(1.05);
+        }
+
+        .food-item i {
+            font-size: 2.5em;
+            color: red; /* Green color for icons */
+            margin-bottom: 10px;
+        }
+
+        .food-item h3 {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="heros">
+        <h1>What's on your mind? <span>🍕 🍔 🍝 🍰</span></h1>
+    </div>
+
+    <!-- Food Icons Section -->
+    <section class="food-icons">
+        <div class="food-item">
+            <i class="fas fa-hamburger"></i>
+            <a href="Burger.html">
+                <br>Burger</a></br></a>
+        </div>
+        <div class="food-item">
+            <i class="fas fa-pizza-slice"></i>
+            <a href="Pizza.html">
+                <br>Pizza</a></br></a>
+        </div>
+        <div class="food-item">
+            <i class="fas fa-utensils"></i>
+            <a href="Noodles.html">
+                <br>Noodles</a></br></a>
+        </div>
+        <div class="food-item">
+            <i class="fas fa-birthday-cake"></i>
+            <a href="Cake.html">
+                <br>Cake</a></br></a>
+        </div>
+    </section>
+
+</body>
+</html>

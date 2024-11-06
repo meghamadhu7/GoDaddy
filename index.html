@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A restaurant that brings people together with good food.">
+    <meta name="keywords" content="restaurant, food, menu, dining">
+    <title>Go Daddy - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Welcome Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://t4.ftcdn.net/jpg/06/94/03/95/360_F_694039559_Da4HGqJ5LfpjIcvWVyyQftkBo80dqcXs.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #fa3d94;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: white;
+            font-size: 1.3em;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .explore-btn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .explore-btn:hover {
+            background-color: #fa3d94;
+        }
+
+        /* Service Section */
+    .service {
+      background-color: #fff;
+      padding: 50px 10%;
+      text-align: center;
+    }
+
+    .service .title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .service .box {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+   
+    }
+
+    .service .box .card {
+      width: 200px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .service .box  :hover{
+        background-color: pink;
+    }
+
+
+    .service .box .card i {
+      font-size: 2rem;
+      color: #f9004d;
+      margin-bottom: 10px;
+    }
+
+    .service .box .card h5 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .service .box .card p {
+      font-size: 1rem;
+      color: #666;
+     
+
+    }
+
+    .service a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        
+    }
+
+        /* Mission Section */
+        .mission {
+            text-align: center;
+            padding: 50px 10%;
+            background-color: #f5f5f5;
+        }
+
+        .mission-text {
+            max-width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .mission h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .mission p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .mission a {
+      color: green;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      display: inline-block;
+      padding: 10px 15px;
+      border: 1px solid green;
+      border-radius: 5px;
+      transition: color 0.3s, background-color 0.3s;
+    }
+        
+
+        .mission-link:hover {
+            color: #fff;
+            background-color: green;
+        }
+
+        /* Footer with Social Icons */
+        footer {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            background-color: #333;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        footer .social-icons a:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Go Daddy</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="Menu.html">Menu</a>
+            <a href="Cart.html">Cart</a>
+            <a href="Loginpage.html">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Hey there! Super excited to e-meet you...</h1>
+                <p class="tagline">"Falling in love one bite at a time."</p>
+                <a href="Menu.html" class="explore-btn">Explore Menu</a>
+            </div>
+        </section>
+
+        <!-- Service Section -->
+        <section class="service" id="menu">
+            <div class="title">
+              <h2>All Our Best Cafe</h2>
+            </div>
+            <div class="box">
+              <div class="card">
+                <i class="fas fa-hamburger"></i>
+                <a href="Burger.html">
+                  <br>Burger</a></br></a>
+                <p>A delicious burger made with the freshest ingredients.</p>
+              </div>
+              <div class="card">
+                <i class="fas fa-pizza-slice"></i>
+                <a href="Pizza.html">
+                  <br>Pizza</a></br></a>
+                <p>Enjoy a slice of our classic pizza with premium toppings.</p>
+              </div>
+              <div class="card">
+                <i class="fas fa-utensils"></i>
+                <a href="Noodles.html">
+                    <br>Noodles</a></br></a>
+                <p>Savor our flavorful noodles in a variety of styles.</p>
+              </div>
+              <div class="card">
+                <i class="fas fa-birthday-cake"></i>
+                <a href="Cake.html">
+                  <br>Cake</a></br></a>
+                <p>Indulge in our soft and moist cakes for any occasion.</p>
+              </div>
+            </div>
+          </section>
+        <!-- Mission Section -->
+  <section class="mission" id="about">
+    <h2>Our mission is to bring people together through food.</h2>
+    <p>We believe in creating memorable experiences with every meal.</p>
+    <a href="#about">More About Us</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+</body>
+</html>

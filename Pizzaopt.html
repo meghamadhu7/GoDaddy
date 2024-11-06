@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 20px;
+}
+
+h2 {
+    color: #333; /* Dark gray color for headings */
+}
+
+.menu-options {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.pizza {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff; /* White background for pizza area */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.pizza-preview {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    min-height: 250px;
+    margin: auto;
+}
+
+.topping {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* Specific topping styles */
+.dough {
+    background-color: #E4B363; /* Dough color */
+}
+.cheese {
+    background-color: #FFD700; /* Cheese color */
+}
+.pepperoni {
+    background-color: #FF6347; /* Pepperoni color */
+}
+.mushrooms {
+    background-color: #DDA0DD; /* Mushrooms color */
+}
+.olives {
+    background-color: #7CFC00; /* Olives color */
+}
+.bell-peppers {
+    background-color: #FF8C00; /* Bell peppers color */
+}
+.onions {
+    background-color: #FFCC99; /* Onions color */
+}
+.basil {
+    background-color: #3CB371; /* Basil color */
+}
+
+.total-price {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.buy-now-button {
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.buy-now-button:hover {
+    background-color: #FF4500;
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+.delete{
+            background-color: red;
+        }
+
+        </style>
+    </head>
+    <body>
+     
+
+        <h2>Pizza Builder</h2>
+
+        <div class="menu-options">
+            <button onclick="addTopping('dough')">Dough ($3)</button>
+            <button onclick="addTopping('cheese')">Cheese ($1)</button>
+            <button onclick="addTopping('pepperoni')">Pepperoni ($1.5)</button>
+            <button onclick="addTopping('mushrooms')">Mushrooms ($0.7)</button>
+            <button onclick="addTopping('olives')">Olives ($0.5)</button>
+            <button onclick="addTopping('bell-peppers')">Bell Peppers ($0.6)</button>
+            <button onclick="addTopping('onions')">Onions ($0.4)</button>
+            <button onclick="addTopping('basil')">Basil ($0.3)</button>
+            <button onclick="resetOrder()" class="delete">Delete</button>
+        </div>
+    
+        <div class="pizza">
+            <h3>Your Pizza:</h3>
+            <div id="pizzaPreview" class="pizza-preview"></div>
+            <div class="total-price">Total Price: $<span id="totalPrice">0.00</span></div>
+            <button onclick="buyNow()" class="buy-now-button">Buy Now</button>
+        </div>
+      
+<script>
+    // Prices for each topping
+const toppingPrices = {
+    'dough': 3.0,
+    'cheese': 1.0,
+    'pepperoni': 1.5,
+    'mushrooms': 0.7,
+    'olives': 0.5,
+    'bell-peppers': 0.6,
+    'onions': 0.4,
+    'basil': 0.3
+};
+
+// Variable to track the total price
+let totalPrice = 0.0;
+
+// Array to store selected toppings
+let toppingsList = [];
+
+// Function to add toppings dynamically to the pizza preview
+function addTopping(type) {
+    const pizzaPreview = document.getElementById('pizzaPreview');
+
+    // Create a new div for the topping
+    const toppingDiv = document.createElement('div');
+    toppingDiv.classList.add(type, 'topping');
+
+    // Add text based on topping type
+    let toppingName = '';
+    switch (type) {
+        case 'dough':
+            toppingName = "Dough";
+            toppingDiv.textContent = toppingName;
+            break;
+        case 'cheese':
+            toppingName = "Cheese";
+            toppingDiv.textContent = toppingName;
+            break;
+        case 'pepperoni':
+            toppingName = "Pepperoni";
+            toppingDiv.textContent = toppingName;
+            break;
+        case 'mushrooms':
+            toppingName = "Mushrooms";
+            toppingDiv.textContent = toppingName;
+            break;
+        case 'olives':
+            toppingName = "Olives";
+            toppingDiv.textContent = toppingName;
+            break;
+        case 'bell-peppers':
+            toppingName = "Bell Peppers";
+            toppingDiv.textContent = toppingName;
+            break;
+        case 'onions':
+            toppingName = "Onions";
+            toppingDiv.textContent = toppingName;
+            break;
+        case 'basil':
+            toppingName = "Basil";
+            toppingDiv.textContent = toppingName;
+            break;
+    }
+
+    // Append the topping to the pizza preview
+    pizzaPreview.appendChild(toppingDiv);
+
+    // Update the total price
+    totalPrice += toppingPrices[type];
+
+    // Display the updated total price
+    document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+
+    // Add the topping to the list
+    toppingsList.push(toppingName);
+}
+
+// Function to handle the Buy Now button click
+function buyNow() {
+    if (toppingsList.length === 0) {
+        alert("Your pizza is empty! Please add toppings before buying.");
+        return;
+    }
+
+    // Create a summary message
+    let orderSummary = "Your Pizza Order:\n";
+    toppingsList.forEach((topping, index) => {
+        orderSummary += `${index + 1}. ${topping}\n`;
+    });
+    orderSummary += `\nTotal Price: $${totalPrice.toFixed(2)}`;
+
+    // Display the summary
+    alert(orderSummary);
+
+    // Reset the order after confirmation
+    resetOrder();
+}
+
+// Function to reset the pizza preview and total price
+function resetOrder() {
+    // Clear toppings list
+    toppingsList = [];
+    totalPrice = 0.0;
+
+    // Clear the preview display
+    document.getElementById('pizzaPreview').innerHTML = '';
+    
+    // Reset the total price display
+    document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+}
+
+</script>
+    </body>
+</html>

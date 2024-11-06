@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            margin: 0;
+            padding: 20px;
+        }
+
+        .menu {
+            text-align: center;
+        }
+        .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333; /* Darker color for better readability */
+        }
+
+        .menu-item {
+            display: inline-block;
+            width: 300px;
+            margin: 20px;
+            text-align: center;
+           
+        }
+
+        .menu-item:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: auto;
+           
+        }
+
+        .menu-item h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #555; /* Slightly lighter for headings */
+        }
+
+        .price {
+            color: green;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .buy-now {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            
+        }
+        .menu :hover{
+            shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .buy-now:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+        .create-own {
+            background-color: black; /* Orange color */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            border-radius: 5px;
+            position: absolute;
+            top: 10px; /* Positioned near the top */
+            left: 10px; /* Positioned near the left corner */
+        }
+
+        .create-own:hover {
+            background-color: green; /* Darker orange on hover */
+            transform: scale(1.05); /* Slightly increase size on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="Cakeopt.html"><button class="create-own">Create Your Own Cake</button></a>
+        <h2>Choose Your Cake</h2>
+        <div class="menu-item">
+            <img src="https://static8.depositphotos.com/1000504/881/i/450/depositphotos_8815315-stock-photo-chocolate-cake.jpg" alt="Chocolate Cake">
+            <h3>Chocolate Cake</h3>
+            <p class="price">$29.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://media.istockphoto.com/id/1350808060/photo/portion-of-delicious-red-velvet-cake-isolated-on-white.jpg?s=612x612&w=0&k=20&c=q0HFsV6LRtCXoHvlkaDvaKI2Vvu3TBDPOTRMvdAN0xI=" alt="Red Velvet Cake">
+            <h3>Red Velvet Cake</h3>
+            <p class="price">$34.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://medinabaking.com/wp-content/uploads/2024/01/Simple-Vanilla-Cake-Isolated-On-White-Background.jpg" alt="Vanilla Cake">
+            <h3>Vanilla Cake</h3>
+            <p class="price">$24.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://media.istockphoto.com/id/995416382/photo/slice-of-carrot-cake-with-frosting.jpg?s=170667a&w=0&k=20&c=kEJ9gp8FYd-NS-jgecWjaKzFPDhxHRLnM-DmA_SJPgA=" alt="Carrot Cake">
+            <h3>Carrot Cake</h3>
+            <p class="price">$27.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://media.istockphoto.com/id/1364933651/photo/classical-cheesecake.jpg?s=612x612&w=0&k=20&c=M5HzEnYzCV2jM5hFeubqZ5SBjvm2cohWLq2hkcDSGGM=" alt="Cheesecake">
+            <h3>Cheesecake</h3>
+            <p class="price">$32.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFs64KhE9PwQK5vbv195GAgI8v9Sz41asEaA&s" alt="Fruit Cake">
+            <h3>Fruit Cake</h3>
+            <p class="price">$28.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+    </div>
+</body>
+</html>

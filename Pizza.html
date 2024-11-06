@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Menu</title>
+    <style>
+       .menu {
+    text-align: center;
+}
+
+.menu h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+.menu-item {
+    display: inline-block;
+    width: 300px;
+    margin: 20px;
+    text-align: center;
+}
+
+.menu-item img {
+    width: 100%;
+    height: 100%;
+
+}
+.menu-item:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.menu-item h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.price {
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.buy-now {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+.create-own {
+            background-color: black; /* Orange color */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            border-radius: 5px;
+            position: absolute;
+            top: 10px; /* Positioned near the top */
+            left: 10px; /* Positioned near the left corner */
+        }
+
+        .create-own:hover {
+            background-color:green; /* Darker orange on hover */
+            transform: scale(1.05); /* Slightly increase size on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="Pizzaopt.html"><button class="create-own">Create Your Own Pizza</button></a>
+        <h2>Choose Your Pizza</h2>
+        <div class="menu-item">
+            <img src="https://i.pinimg.com/736x/94/39/7e/94397ee433024ce3ee6585f15f078b3b.jpg" alt="Margherita Pizza">
+            <h3>Margherita Pizza</h3>
+            <p class="price">$12.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://static.vecteezy.com/system/resources/previews/046/777/678/non_2x/tom-yum-kung-pizza-cheese-on-a-white-background-isolation-photo.jpg" alt="Pepperoni Pizza">
+            <h3>Pepperoni Pizza</h3>
+            <p class="price">$14.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn-rrx6HfzwRPAyCUisCXA3w57eRUf5EtBag&s" alt="BBQ Chicken Pizza">
+            <h3>BBQ Chicken Pizza</h3>
+            <p class="price">$15.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://t3.ftcdn.net/jpg/01/02/97/10/360_F_102971073_l5ygYH1qCvejA8efcfuAYCRm7epxBEjn.jpg" alt="Veggie Pizza">
+            <h3>Veggie Pizza</h3>
+            <p class="price">$11.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://img.freepik.com/free-photo/traditional-supreme-pizza-isolated-white-background_123827-20130.jpg?semt=ais_hybrid" alt="Meat Lover's Pizza">
+            <h3>Meat Lover's Pizza</h3>
+            <p class="price">$16.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://media01.stockfood.com/largepreviews/MzQ2MTY2NTg0/11166664-Grilled-Chicken-and-Red-Onion-Pizza-From-Above-on-a-White-Background.jpg" alt="Hawaiian Pizza">
+            <h3>Hawaiian Pizza</h3>
+            <p class="price">$13.99</p>
+            <button class="buy-now">Buy Now</button>
+        </div>
+    </div>
+</body>
+</html>

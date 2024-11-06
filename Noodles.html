@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .menu {
+                text-align: center;
+                position: relative;
+                padding-top: 50px;
+            }
+
+            .menu h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+
+
+            .menu-item {
+                display: inline-block;
+                width: 300px;
+                margin: 20px;
+                text-align: center;
+                
+            }
+
+            .menu-item img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .menu-item:hover {
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .menu-item h3 {
+                font-size: 20px;
+                margin: 10px 0;
+            }
+
+            .price {
+                color: green;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .buy-now {
+                background-color: green;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+            }
+             /* Style for the "Create Your Own Noodles" button */
+        .create-own {
+            background-color: black; /* Orange color */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            border-radius: 5px;
+            position: absolute;
+            top: 10px; /* Positioned near the top */
+            left: 10px; /* Positioned near the left corner */
+        }
+
+        .create-own:hover {
+            background-color: green; /* Darker orange on hover */
+            transform: scale(1.05); /* Slightly increase size on hover */
+        }
+
+        </style>
+    </head>
+    <body>
+     
+    
+        <div class="menu">
+           <a href="Noodleopt.html"><button class="create-own">Create Your Own Noodles</button></a>
+            <h2>Choose Your Noodles</h2>
+            <div class="menu-item">
+                
+                <img src="https://media.istockphoto.com/id/1287907400/ja/%E3%82%B9%E3%83%88%E3%83%83%E3%82%AF%E3%83%95%E3%82%A9%E3%83%88/%E9%86%A4%E6%B2%B9%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%E3%82%B9%E3%83%BC%E3%83%97%E5%92%8C%E9%A3%9F.jpg?s=612x612&w=0&k=20&c=etYIG7dMJFarW9mPLoETgio8Ntv8vNnWi1LE02BUe5Y=" alt="Spicy Ramen">
+                <h3>Spicy Ramen</h3>
+                <p class="price">$9.99</p>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://thumbs.dreamstime.com/b/wooden-bowl-instant-noodles-isolated-white-background-vegetables-herbs-clipping-path-175594751.jpg" alt="Stir-Fried Noodles">
+                <h3>Stir-Fried Noodles</h3>
+                <p class="price">$8.99</p>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://img.freepik.com/premium-photo/ramen-with-chicken-noodles-spinach-soft-egg-white-background-isolated_718046-1061.jpg" alt="Chicken Noodle Soup">
+                <h3>Chicken Noodle Soup</h3>
+                <p class="price">$10.99</p>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://www.shutterstock.com/image-photo/pasta-ham-pepper-260nw-626442953.jpg" alt="Pad Thai">
+                <h3>Pad Thai</h3>
+                <p class="price">$12.99</p>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://png.pngtree.com/thumb_back/fh260/background/20240723/pngtree-thai-drunken-noodles-with-seafood-pad-kee-mao-with-shrimp-isolated-image_15911651.jpg" alt="Lo Mein">
+                <h3>Lo Mein</h3>
+                <p class="price">$11.99</p>
+                <button class="buy-now">Buy Now</button><br>
+                
+
+            </div>
+        </div>
+    </body>
+</html>

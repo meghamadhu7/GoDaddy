@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0; /* Light gray background */
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333; /* Dark gray color for headings */
+        }
+
+        .menu-options {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05); /* Slightly increase size on hover */
+        }
+
+        .cake {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff; /* White background for cake area */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        }
+
+        .cake-preview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            min-height: 200px;
+            margin: auto;
+        }
+
+        .layer, .topping {
+            width: 120px;
+            height: 30px;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        /* Specific layer and topping styles */
+        .vanilla {
+            background-color: #f3e5ab; /* Vanilla layer */
+        }
+        .chocolate {
+            background-color: #7b3e3e; /* Chocolate layer */
+        }
+        .red-velvet {
+            background-color: #c73a3a; /* Red Velvet layer */
+        }
+        .strawberry {
+            background-color: #ff6f61; /* Strawberry topping */
+        }
+        .whipped-cream {
+            background-color: #fff; /* Whipped cream topping */
+        }
+        .nuts {
+            background-color: #8b4513; /* Nuts topping */
+        }
+        .fruit {
+            background-color: #ffeb3b; /* Fruit topping */
+        }
+
+        .total-price {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .buy-now-button {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .buy-now-button:hover {
+            background-color: #FF4500;
+            transform: scale(1.05); /* Slightly increase size on hover */
+        }
+        .delete{
+            background-color: red;
+        }
+        .delete :hover{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Cake Builder</h2>
+
+    <div class="menu-options">
+        <button onclick="addLayer('vanilla')">Vanilla Layer ($3)</button>
+        <button onclick="addLayer('chocolate')">Chocolate Layer ($3.5)</button>
+        <button onclick="addLayer('red-velvet')">Red Velvet Layer ($4)</button>
+        <button onclick="addTopping('strawberry')">Strawberry Topping ($1)</button>
+        <button onclick="addTopping('whipped-cream')">Whipped Cream Topping ($0.5)</button>
+        <button onclick="addTopping('nuts')">Nuts Topping ($0.8)</button>
+        <button onclick="addTopping('fruit')">Fruit Topping ($1.2)</button>
+        <button onclick="resetOrder()" class="delete">Delete</button>
+    </div>
+
+    <div class="cake">
+        <h3>Your Cake:</h3>
+        <div id="cakePreview" class="cake-preview"></div>
+        <div class="total-price">Total Price: $<span id="totalPrice">0.00</span></div>
+        <button onclick="buyNow()" class="buy-now-button">Buy Now</button>
+    </div>
+
+    <script>
+        // Prices for each layer and topping
+        const layerPrices = {
+            'vanilla': 3.0,
+            'chocolate': 3.5,
+            'red-velvet': 4.0
+        };
+
+        const toppingPrices = {
+            'strawberry': 1.0,
+            'whipped-cream': 0.5,
+            'nuts': 0.8,
+            'fruit': 1.2
+        };
+
+        // Variable to track the total price
+        let totalPrice = 0.0;
+
+        // Array to store selected items
+        let selectedItems = [];
+
+        // Function to add layers dynamically to the cake preview
+        function addLayer(type) {
+            const cakePreview = document.getElementById('cakePreview');
+
+            // Create a new div for the layer
+            const layerDiv = document.createElement('div');
+            layerDiv.classList.add(type, 'layer');
+
+            // Add text based on layer type
+            layerDiv.textContent = type.charAt(0).toUpperCase() + type.slice(1) + " Layer";
+
+            // Append the layer to the cake preview
+            cakePreview.appendChild(layerDiv);
+
+            // Update the total price
+            totalPrice += layerPrices[type];
+
+            // Display the updated total price
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+
+            // Add the layer to the list
+            selectedItems.push(layerDiv.textContent);
+        }
+
+        // Function to add toppings dynamically to the cake preview
+        function addTopping(type) {
+            const cakePreview = document.getElementById('cakePreview');
+
+            // Create a new div for the topping
+            const toppingDiv = document.createElement('div');
+            toppingDiv.classList.add(type, 'topping');
+
+            // Add text based on topping type
+            toppingDiv.textContent = type.charAt(0).toUpperCase() + type.slice(1) + " Topping";
+
+            // Append the topping to the cake preview
+            cakePreview.appendChild(toppingDiv);
+
+            // Update the total price
+            totalPrice += toppingPrices[type];
+
+            // Display the updated total price
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+
+            // Add the topping to the list
+            selectedItems.push(toppingDiv.textContent);
+        }
+
+        // Function to handle the Buy Now button click
+        function buyNow() {
+            if (selectedItems.length === 0) {
+                alert("Your cake is empty! Please add layers and toppings before buying.");
+                return;
+            }
+
+            // Create a summary message
+            let orderSummary = "Your Cake Order:\n";
+            selectedItems.forEach((item, index) => {
+                orderSummary += `${index + 1}. ${item}\n`;
+            });
+            orderSummary += `\nTotal Price: $${totalPrice.toFixed(2)}`;
+
+            // Display the summary
+            alert(orderSummary);
+
+            // Reset the order after confirmation
+            resetOrder();
+        }
+
+        // Function to reset the cake preview and total price
+        function resetOrder() {
+            // Clear selected items
+            selectedItems = [];
+            totalPrice = 0.0;
+
+            // Clear the preview display
+            document.getElementById('cakePreview').innerHTML = '';
+            
+            // Reset the total price display
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+        }
+    </script>
+</body>
+</html>
